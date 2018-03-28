@@ -54,9 +54,9 @@ X4 = X4 .* (-1);
 %X1 = X1 .^ 3;
 %X2 = X2 .^ 2;
 
-X4 = X4 .* 3;
-X1 = X1 .* 5;
-X2 = X2 .* 3;
+X4 = X4 ./ 3;
+X3 = X3 ./ 2;
+X2 = X2 ./ 2;
 
 
 %Composing features into one matrix
@@ -64,7 +64,7 @@ XX = [ones(m,1), X1, X2, X3, X4];
 theta = zeros(5, 1);
 
 thet = pinv(XX'*XX)*XX'*Y
-plot(X, XX*thet, '-')
+plot(X(1:215), (XX*thet)(1:215), '-')
 legend('Stocks line','Training line')
 
 hold on
@@ -87,7 +87,7 @@ fprintf('\nRunning Gradient Descent ...\n')
 fprintf('Theta found by gradient descent:\n');
 fprintf('%f\n', theta);
 
-plot(X, XX*theta, '-', 'color', 'g')
+plot(X(216:261), (XX*thet)(216:261), '-', 'color', 'g')
 J_history
 
 
